@@ -134,7 +134,7 @@ Scope for this diagram:
 
 Diagram placeholder:
 
-IN FUTURE
+![useCase diagram](./images/usecase.png)
 
 ## 4.2 Activity Diagram / BPMN
 
@@ -151,7 +151,7 @@ Business flow to model:
 
 Diagram placeholder:
 
-IN FUTURE
+![activity diagram](./images/activity.png)
 
 ## 4.3 Sequence Diagram
 
