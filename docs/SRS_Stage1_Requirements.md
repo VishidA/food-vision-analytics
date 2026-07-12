@@ -1,5 +1,5 @@
 # Software Requirements Specification (SRS)
-## Food Vision Analytics — Stage 1: Requirements Engineering
+## Food Vision Analytics - Stage 1: Requirements Engineering
 
 ## Contents
 1. [Vision and Context](#1-vision-and-context)
@@ -28,11 +28,11 @@ The system is developed as an individual/team practice project (Data Science / M
 
 ### Scope Boundaries for the Current Iteration
 The practice period is approximately two weeks. To keep the delivered software realistic within this timeframe, the following scoping decisions apply to the current iteration (details in Section 7):
-- The classification model targets a **reduced subset of food classes** (e.g., 15–20 classes from a public dataset such as Food-101), using **transfer learning / fine-tuning** on a pretrained lightweight architecture (e.g., MobileNet or EfficientNet), rather than a from-scratch CNN and a full architecture comparison.
+- The classification model targets a **reduced subset of food classes** (e.g., 15-20 classes from a public dataset such as Food-101), using **transfer learning / fine-tuning** on a pretrained lightweight architecture (e.g., MobileNet or EfficientNet), rather than a from-scratch CNN and a full architecture comparison.
 - Calorie **and** macronutrient (protein/fat/carbohydrate) estimation is in scope, since both come from the same static nutrition reference lookup and add no material extra effort.
 - Full time-series trend analysis (moving averages, variance, deviation-from-norm detection) is **not** in scope for this iteration; only simple aggregated totals (daily/weekly) are included.
 - The nutrition reference dataset is maintained as a static, versioned file (CSV/DB seed), not through an administrative UI.
-- User identification is handled through a minimal authentication mechanism sufficient to associate history with a user — not a full role-based access control (RBAC) system.
+- User identification is handled through a minimal authentication mechanism sufficient to associate history with a user - not a full role-based access control (RBAC) system.
 
 ### Summary
 Food Vision Analytics is an ML-powered application that:
@@ -93,7 +93,7 @@ The system stores request history per user and provides retrieval with simple ag
 - **API**: Application Programming Interface.
 - **p95 Response Time**: 95th percentile latency across requests.
 - **Nutrition Reference Dataset**: Static lookup table mapping food classes to calorie/macronutrient values, maintained outside the running application in the current iteration.
-- **MVP**: Minimum Viable Product — the scope defined for the current 2-week iteration.
+- **MVP**: Minimum Viable Product - the scope defined for the current 2-week iteration.
 
 ---
 
@@ -328,7 +328,7 @@ The following items appear in the original project proposal and development plan
 - **Model quality monitoring**: dashboards and drift detection for precision/recall over time; exposed p95 latency metrics.
 - **Architecture comparison**: benchmarking a custom CNN against multiple transfer-learning backbones (ResNet, MobileNet, EfficientNet), rather than a single fine-tuned model.
 - **Full class coverage**: extending beyond the reduced class subset toward the full source dataset (e.g., all Food-101 classes) or a custom-collected dataset.
-- **Client interface selection**: choice between an interactive web app (Streamlit/Gradio), a chat bot (e.g., Telegram via aiogram), or a classic web client — to be decided during the Stage 2/Stage 5 design work referenced in the development plan.
+- **Client interface selection**: choice between an interactive web app (Streamlit/Gradio), a chat bot (e.g., Telegram via aiogram), or a classic web client - to be decided during the Stage 2/Stage 5 design work referenced in the development plan.
 - **Production-grade storage**: migration from SQLite to PostgreSQL with backup/restore procedures and configurable data retention policy.
 
 ---
