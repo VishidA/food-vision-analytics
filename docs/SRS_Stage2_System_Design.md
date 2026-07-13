@@ -102,7 +102,7 @@ The diagram is organized into three labeled sections that map directly onto the 
 `User → API Backend → ML Inference Service → Nutrition Reference → Database`: this section is the sequential realization of the Use Case Diagram's include chain (UC-2 → UC-3 → UC-4 → UC-5):
 1. File validation happens locally in the API Backend.
 2. The API Backend calls the ML Inference Service and receives the predicted class and confidence.
-3. The API Backend queries the **Nutrition Reference** as a distinct participant, not folded into the Database - even though both may physically live in the same SQLite instance in the current iteration, they are conceptually separate: the reference dataset is static and Admin-maintained (per SRS constraints), while the Database stores dynamic, per-user history.
+3. The API Backend queries the **Nutrition Reference** as a distinct participant, not folded into the Database - even though both may physically live in the same PostgreSQL instance in the current iteration, they are conceptually separate: the reference dataset is static and Admin-maintained (per SRS constraints), while the Database stores dynamic, per-user history.
 4. The API Backend persists the result and returns the combined response to the user.
 
 ### History review

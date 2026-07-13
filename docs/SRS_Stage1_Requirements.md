@@ -329,7 +329,6 @@ The following items appear in the original project proposal and development plan
 - **Architecture comparison**: benchmarking a custom CNN against multiple transfer-learning backbones (ResNet, MobileNet, EfficientNet), rather than a single fine-tuned model.
 - **Full class coverage**: extending beyond the reduced class subset toward the full source dataset (e.g., all Food-101 classes) or a custom-collected dataset.
 - **Client interface selection**: choice between an interactive web app (Streamlit/Gradio), a chat bot (e.g., Telegram via aiogram), or a classic web client - to be decided during the Stage 2/Stage 5 design work referenced in the development plan.
-- **Production-grade storage**: migration from SQLite to PostgreSQL with backup/restore procedures and configurable data retention policy.
 
 ---
 
