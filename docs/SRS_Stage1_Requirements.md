@@ -287,9 +287,9 @@ Alternative flows:
 - Uploaded files shall be validated to reduce malicious input risk.
 
 ### NFR-5 Deployment Environment
-- Supported baseline runtime: Linux, Python 3.10+.
+- Supported baseline runtime: Linux, Python 3.10.
 - API stack: FastAPI-compatible ASGI service.
-- Storage: SQLite for local development (PostgreSQL as a future production option).
+- Storage: PostgreSQL.
 - Configuration shall be managed via environment variables.
 
 ### NFR-6 Maintainability
