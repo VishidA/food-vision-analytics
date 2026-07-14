@@ -2,7 +2,7 @@ from decimal import Decimal
 import datetime
 from sqlalchemy import DECIMAL, DateTime, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
-from base import Base
+from .base import Base
 
 
 class ConsumptionLog(Base):

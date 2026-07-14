@@ -1,7 +1,7 @@
-from base import Base
 import datetime
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import VARCHAR, DateTime
+from .base import Base
 
 class Users(Base):
     __tablename__ = "Users"

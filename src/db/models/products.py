@@ -1,7 +1,7 @@
 from decimal import Decimal
 from sqlalchemy import DECIMAL, VARCHAR
 from sqlalchemy.orm import Mapped, mapped_column
-from base import Base
+from .base import Base
 
 
 class Products(Base):
