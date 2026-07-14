@@ -16,8 +16,8 @@ class ConsumptionLog(Base):
 		default=datetime.datetime.utcnow,
 		nullable=False,
 	)
-	weight: Mapped[Decimal] = mapped_column(DECIMAL, nullable=False)
-	log_calories: Mapped[Decimal] = mapped_column(DECIMAL, nullable=False)
-	log_protein: Mapped[Decimal] = mapped_column(DECIMAL, nullable=False)
-	log_fat: Mapped[Decimal] = mapped_column(DECIMAL, nullable=False)
-	log_carbs: Mapped[Decimal] = mapped_column(DECIMAL, nullable=False)
+	weight: Mapped[Decimal] = mapped_column(DECIMAL(5, 2), nullable=False)
+	log_calories: Mapped[Decimal] = mapped_column(DECIMAL(5, 2), nullable=False)
+	log_protein: Mapped[Decimal] = mapped_column(DECIMAL(5, 2), nullable=False)
+	log_fat: Mapped[Decimal] = mapped_column(DECIMAL(5, 2), nullable=False)
+	log_carbs: Mapped[Decimal] = mapped_column(DECIMAL(5, 2), nullable=False)

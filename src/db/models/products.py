@@ -9,7 +9,7 @@ class Products(Base):
 
 	id: Mapped[int] = mapped_column(primary_key=True, unique=True, nullable=False)
 	name: Mapped[str] = mapped_column(VARCHAR(50), nullable=False)
-	calories_100g: Mapped[Decimal] = mapped_column(DECIMAL, nullable=False)
-	protein_100g: Mapped[Decimal] = mapped_column(DECIMAL, nullable=False)
-	fat_100g: Mapped[Decimal] = mapped_column(DECIMAL, nullable=False)
-	carbs_100g: Mapped[Decimal] = mapped_column(DECIMAL, nullable=False)
+	calories_100g: Mapped[Decimal] = mapped_column(DECIMAL(5, 2), nullable=False)
+	protein_100g: Mapped[Decimal] = mapped_column(DECIMAL(5, 2), nullable=False)
+	fat_100g: Mapped[Decimal] = mapped_column(DECIMAL(5, 2), nullable=False)
+	carbs_100g: Mapped[Decimal] = mapped_column(DECIMAL(5, 2), nullable=False)
