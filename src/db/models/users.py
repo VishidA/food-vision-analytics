@@ -12,6 +12,6 @@ class Users(Base):
     name: Mapped[str] = mapped_column(VARCHAR(15), nullable=False)
     register_date: Mapped[datetime.datetime] = mapped_column(
         DateTime(timezone=True), 
-        default=datetime.datetime.utcnow,
+        default=lambda: datetime.datetime.now(datetime.timezone.utc),
         nullable=False
     )

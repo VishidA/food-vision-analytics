@@ -13,7 +13,7 @@ class ConsumptionLog(Base):
 	product_id: Mapped[int] = mapped_column(ForeignKey("Products.id"), nullable=False)
 	consumed_time: Mapped[datetime.datetime] = mapped_column(
 		DateTime(timezone=True),
-		default=datetime.datetime.utcnow,
+		default=lambda: datetime.datetime.now(datetime.timezone.utc),
 		nullable=False,
 	)
 	weight: Mapped[Decimal] = mapped_column(DECIMAL(5, 2), nullable=False)

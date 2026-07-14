@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 import uvicorn
 from db.database import engine
-from db.models.base import Base
+from db.models import Base
 from db.seed_spoonacular import seed_database_from_spoonacular
 
 @asynccontextmanager
@@ -11,7 +11,12 @@ async def lifespan(app: FastAPI):
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     
-    await seed_database_from_spoonacular()
+    try:
+        await seed_database_from_spoonacular()
+    except Exception as exc:
+        print(f"[seed] skipped due to error: {exc}")
+
+        
     yield
     
 
