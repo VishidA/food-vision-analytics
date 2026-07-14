@@ -15,35 +15,32 @@ def load_classes_from_txt(filepath="./data/..."):
 FOOD_101_CLASSES = load_classes_from_txt()
 
 async def seed_database_from_spoonacular():
-    # 1. Відкриваємо асинхронну сесію через вашу фабрику
     async with async_session_maker() as session:
         existing_products = await session.scalar(select(func.count(Products.id)))
-        
+
         if existing_products and existing_products > 0:
-            print("База вже заповнена, пропускаю seed.")
+            print("The database is already populated, skipping seed.")
             return
 
-        print("Починаємо завантаження даних з API Spoonacular...")
+        print("Starting to load data from the Spoonacular API...")
         
-        # 2. Відкриваємо асинхронний клієнт для HTTP-запитів
         async with httpx.AsyncClient() as client:
             for raw_class_name in FOOD_101_CLASSES:
                 search_query = raw_class_name.replace("_", " ")
-                print(f"Робимо запит для: {search_query}...")
+                print(f"Sending request for: {search_query}...")
                 
                 params = {
                     "title": search_query,
                     "apiKey": settings.SPOONACULAR_API_KEY
                 }
                 
-                # 3. Чекаємо на відповідь від API (await)
                 response = await client.get(API_URL, params=params)
                 
                 if response.status_code == 200:
                     data = response.json()
                     
                     if "status" in data and data["status"] == "failure":
-                        print(f"  [-] API не знайшло даних для: {search_query}")
+                        print(f"  [-] The API did not find data for: {search_query}")
                         continue
                     
                     calories = data.get("calories", {}).get("value", 0.0)
@@ -59,21 +56,18 @@ async def seed_database_from_spoonacular():
                         carbs_100g=carbs
                     )
                     
-                    # session.add() залишається без await, бо це локальна синхронна операція
                     session.add(new_product)
-                    print(f"  [+] Додано: {raw_class_name}")
+                    print(f"  [+] Added: {raw_class_name}")
                     
                 else:
-                    print(f"  [x] Помилка сервера для {search_query}: {response.status_code}")
+                    print(f"  [x] Server error for {search_query}: {response.status_code}")
                     
-        # 4. Коміт транзакції тепер вимагає await, оскільки це звернення до БД
         try:
             await session.commit()
-            print("\nУспіх! Дані збережено до бази.")
+            print("\nSuccess! Data has been saved to the database.")
         except Exception as e:
             await session.rollback()
-            print(f"\nПомилка запису в БД: {e}")
+            print(f"\nDatabase write error: {e}")
 
 if __name__ == "__main__":
-    # Оскільки функція асинхронна, запускаємо її через asyncio.run()
     asyncio.run(seed_database_from_spoonacular())
