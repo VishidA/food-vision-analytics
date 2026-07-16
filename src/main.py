@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 import uvicorn
 from db.database import engine
 from db.models import Base
-from db.seed_spoonacular import seed_database_from_spoonacular
+from db.seed_csv import seed_database_from_csv
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -12,7 +12,7 @@ async def lifespan(app: FastAPI):
         await conn.run_sync(Base.metadata.create_all)
     
     try:
-        await seed_database_from_spoonacular()
+        await seed_database_from_csv()    
     except Exception as exc:
         print(f"[seed] skipped due to error: {exc}")
 

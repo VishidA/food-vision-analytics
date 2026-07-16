@@ -23,16 +23,21 @@ async def seed_database_from_spoonacular():
     FOOD_101_CLASSES = load_classes_from_txt()
 
     async with async_session_maker() as session:
-        existing_products = await session.scalar(select(func.count(Products.id)))
 
-        if existing_products and existing_products > 0:
-            print("The database is already populated, skipping seed.")
-            return
+        result = await session.execute(select(Products.name))
+        existing_products = set(result.scalars().all())
+
+        print(f"В базі знайдено {len(existing_products)} страв. Починаємо перевірку...")
 
         print("Starting to load data from the Spoonacular API...")
         
         async with httpx.AsyncClient(timeout=30.0) as client:
             for raw_class_name in FOOD_101_CLASSES:
+
+                if raw_class_name in existing_products:
+                    print(f"  [~] {raw_class_name} вже є в БД. Пропускаємо.")
+                    continue
+
                 search_query = raw_class_name.replace("_", " ")
                 print(f"Sending request for: {search_query}...")
                 
