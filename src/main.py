@@ -4,6 +4,7 @@ import uvicorn
 from db.database import engine
 from db.models import Base
 from db.seed_csv import seed_database_from_csv
+from api.routes.upload import router as upload_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -21,6 +22,7 @@ async def lifespan(app: FastAPI):
     
 
 app = FastAPI(lifespan=lifespan)
+app.include_router(upload_router)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8080, reload=True)

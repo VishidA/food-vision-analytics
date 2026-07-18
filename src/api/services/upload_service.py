@@ -29,6 +29,12 @@ async def process_upload(
     except Exception as exc:
         raise HTTPException(status_code=503, detail="Classification service unavailable") from exc
 
+    if prediction["low_confidence_warning"]:
+        raise HTTPException(
+            status_code=422,
+            detail="Image does not look like a food product",
+        )
+
     result = await session.execute(
         select(Products).where(Products.name == prediction["predicted_class"])
     )
