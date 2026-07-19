@@ -1,0 +1,58 @@
+.masthead {
+  border-bottom: 4px solid var(--line);
+  background: var(--paper-raised);
+}
+
+.masthead__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.wordmark__main {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+}
+
+.wordmark__sub {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+.masthead__nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.masthead__link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.masthead__link:hover { border-bottom-color: var(--accent); }
+
+.user-bar__name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}

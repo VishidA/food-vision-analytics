@@ -1,113 +1,12 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Food Vision Analytics</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Vision Analytics</title>
 </head>
 <body>
-
-<header class="masthead">
-  <div class="wrap masthead__row">
-    <div class="wordmark">
-      <span class="wordmark__main">FOOD VISION</span>
-      <span class="wordmark__sub">ANALYTICS</span>
-    </div>
-    <div id="userBar" class="user-bar hidden">
-      <span id="userName" class="user-bar__name"></span>
-      <button id="logoutBtn" class="btn btn--ghost">Вийти</button>
-    </div>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <section id="authScreen" class="panel panel--narrow">
-    <div class="tabs">
-      <button class="tab is-active" data-tab="login">Увійти</button>
-      <button class="tab" data-tab="register">Реєстрація</button>
-    </div>
-
-    <form id="loginForm" class="stack">
-      <label class="field">
-        <span class="field__label">Логін</span>
-        <input type="text" name="username" required autocomplete="username">
-      </label>
-      <label class="field">
-        <span class="field__label">Пароль</span>
-        <input type="password" name="password" required autocomplete="current-password">
-      </label>
-      <button type="submit" class="btn btn--primary">Увійти</button>
-      <p class="form-msg" data-msg="login"></p>
-    </form>
-
-    <form id="registerForm" class="stack hidden">
-      <label class="field">
-        <span class="field__label">Логін</span>
-        <input type="text" name="username" required>
-      </label>
-      <label class="field">
-        <span class="field__label">Ім'я</span>
-        <input type="text" name="name" required>
-      </label>
-      <label class="field">
-        <span class="field__label">Пароль</span>
-        <input type="password" name="password" required autocomplete="new-password">
-      </label>
-      <button type="submit" class="btn btn--primary">Створити акаунт</button>
-      <p class="form-msg" data-msg="register"></p>
-    </form>
-  </section>
-
-  <section id="appScreen" class="app-grid hidden">
-
-    <div class="panel">
-      <h2 class="panel__title">Завантажити фото страви</h2>
-
-      <form id="uploadForm" class="stack">
-        <label class="dropzone" id="dropzone">
-          <input type="file" id="photoInput" name="file" accept="image/jpeg,image/png" required>
-          <span class="dropzone__hint" id="dropzoneHint">Обери фото (JPEG / PNG, до 10 МБ)</span>
-          <img id="photoPreview" class="dropzone__preview hidden" alt="Попередній перегляд">
-        </label>
-
-        <label class="field">
-          <span class="field__label">Вага порції, г</span>
-          <input type="number" name="weight_grams" id="weightInput" value="100" min="1" step="1" required>
-        </label>
-
-        <button type="submit" class="btn btn--primary" id="uploadBtn">Розпізнати та зберегти</button>
-        <p class="form-msg" data-msg="upload"></p>
-      </form>
-
-      <div id="resultCard" class="nutrition-label hidden"></div>
-    </div>
-
-    <div class="panel">
-      <div class="panel__title-row">
-        <h2 class="panel__title">Історія споживання</h2>
-        <button id="refreshHistoryBtn" class="btn btn--ghost btn--small">Оновити</button>
-      </div>
-
-      <div id="historyTotals" class="totals-strip"></div>
-      <div id="historyList" class="history-list"></div>
-
-      <div class="pager">
-        <button id="prevPageBtn" class="btn btn--ghost btn--small">&larr; Попередні</button>
-        <span id="pageLabel" class="pager__label">1</span>
-        <button id="nextPageBtn" class="btn btn--ghost btn--small">Наступні &rarr;</button>
-      </div>
-    </div>
-
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="wrap">Food Vision Analytics &mdash; практика, Amazinum &middot; демонстраційний клієнт</div>
-</footer>
-
-<script src="app.js"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
