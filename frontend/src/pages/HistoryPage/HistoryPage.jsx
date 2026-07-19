@@ -15,6 +15,7 @@ function formatClassName(rawName) {
 }
 
 function productLabel(entry) {
+  if (entry.predicted_class) return formatClassName(entry.predicted_class);
   if (entry.product_name) return formatClassName(entry.product_name);
   return `Product #${entry.product_id}`;
 }
