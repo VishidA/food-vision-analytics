@@ -39,6 +39,11 @@ body {
   padding: 0 24px;
 }
 
+.app-layout {
+  display: flex;
+  flex-direction: column;
+}
+
 .btn {
   font-family: var(--font-display);
   font-weight: 700;
@@ -78,7 +83,7 @@ body {
   border: 2px solid var(--line);
   border-radius: var(--radius);
   padding: 28px;
-  margin: 0 auto;
+  margin: 30px auto;
   width: 100%;
 }
 
