@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from api.routes import upload, auth, history
+from backend.src.api.routes import upload
+from backend.src.api.routes import auth, history
 
 router = APIRouter()
 router.include_router(upload.router, tags=["Upload"], prefix="/consumption")

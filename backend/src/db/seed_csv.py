@@ -1,8 +1,8 @@
 import csv
 import os
 from sqlalchemy import select
-from db.database import async_session_maker
-from db.models import Products
+from backend.src.db.database import async_session_maker
+from backend.src.db.models import Products
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 CSV_FILE_PATH = os.path.join(CURRENT_DIR, "data", "products_export.csv")

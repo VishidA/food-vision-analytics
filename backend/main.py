@@ -2,10 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import uvicorn
-from db.database import engine
-from db.models import Base
-from db.seed_csv import seed_database_from_csv
-from api.routes.api import router
+from backend.src.db.database import engine
+from backend.src.db.models import Base
+from backend.src.db.seed_csv import seed_database_from_csv
+from backend.src.api.routes.api import router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

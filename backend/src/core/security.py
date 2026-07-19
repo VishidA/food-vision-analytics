@@ -1,8 +1,8 @@
 import jwt
 from passlib.context import CryptContext
-from api.schemas.tokens import JWTUser
+from backend.src.api.schemas.tokens import JWTUser
 from pydantic import ValidationError
-from core.config import settings
+from backend.src.core.config import settings
 
 SECRET_KEY = settings.SECURITY_SECRET_KEY
 ALGORITHM = "HS256"
