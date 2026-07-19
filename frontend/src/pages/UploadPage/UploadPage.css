@@ -1,0 +1,104 @@
+.panel__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--line);
+}
+
+.stack { display: flex; flex-direction: column; gap: 16px; }
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 2px dashed var(--line-soft);
+  border-radius: var(--radius);
+  padding: 24px;
+  cursor: pointer;
+  text-align: center;
+  min-height: 140px;
+}
+.dropzone:hover { border-color: var(--ink); }
+.dropzone input[type='file'] { display: none; }
+.dropzone__hint { font-size: 13px; color: var(--muted); }
+.dropzone__preview {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: var(--radius);
+  border: 2px solid var(--line);
+}
+
+.nutrition-label {
+  margin-top: 24px;
+  border: 3px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  background: var(--paper-raised);
+}
+
+.nutrition-label__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.nutrition-label__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  border-bottom: 8px solid var(--line);
+  padding-bottom: 8px;
+  margin: 4px 0 10px;
+}
+
+.nutrition-label__warning {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--herb);
+  border: 1px solid var(--herb);
+  padding: 2px 8px;
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+}
+
+.nutrition-label__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line-soft);
+  padding: 7px 0;
+}
+.nutrition-label__row:last-child { border-bottom: none; }
+
+.nutrition-label__row--big { border-bottom: 4px solid var(--line); padding: 10px 0; }
+.nutrition-label__row--big .nutrition-label__key {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.nutrition-label__row--big .nutrition-label__val {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.nutrition-label__key { font-size: 14px; }
+.nutrition-label__val { font-family: var(--font-mono); font-weight: 700; font-size: 15px; }
+
+.nutrition-label__meta {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}

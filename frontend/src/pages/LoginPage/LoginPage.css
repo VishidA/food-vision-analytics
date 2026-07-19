@@ -1,0 +1,33 @@
+.panel--narrow {
+  max-width: 420px;
+  margin: 40px auto;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 2px solid var(--line-soft);
+  margin-bottom: 24px;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.tab.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.stack { display: flex; flex-direction: column; gap: 16px; }
