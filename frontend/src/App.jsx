@@ -5,7 +5,7 @@ import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import UploadPage from './pages/UploadPage/UploadPage.jsx';
 import HistoryPage from './pages/HistoryPage/HistoryPage.jsx';
 import { useAuth } from './contexts/AuthContext.jsx';
-import './App.css';
+import './styles/App.css';
 
 function RequireAuth({ children }) {
   const { isAuthenticated, loading } = useAuth();
