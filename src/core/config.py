@@ -3,6 +3,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     DATABASE_URL: str
     SPOONACULAR_API_KEY: str 
+    SECURITY_SECRET_KEY: str
 
     model_config = SettingsConfigDict(
         env_file=".env", 
