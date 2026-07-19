@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from db.database import get_async_session
-from db.models import Users, ConsumptionLog
+from db.models import Users, ConsumptionLog, Products
 from api.schemas.consumption_log import ConsumptionLogResponse
 from api.dependencies.auth import get_current_user
 
@@ -20,7 +20,8 @@ async def get_consumption_history(
     Returns the consumption history for the currently authenticated user.
     """
     stmt = (
-        select(ConsumptionLog)
+        select(ConsumptionLog, Products.name.label("product_name"))
+        .join(Products, Products.id == ConsumptionLog.product_id)
         .where(ConsumptionLog.user_id == current_user.id)
         .order_by(ConsumptionLog.id.desc()) 
         .offset(skip)
@@ -28,6 +29,14 @@ async def get_consumption_history(
     )
     
     result = await session.execute(stmt)
-    logs = result.scalars().all()
-    
-    return logs
+    rows = result.all()
+
+    return [
+        ConsumptionLogResponse.model_validate(
+            {
+                **log.__dict__,
+                "product_name": product_name,
+            }
+        )
+        for log, product_name in rows
+    ]

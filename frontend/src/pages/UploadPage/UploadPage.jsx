@@ -3,7 +3,6 @@ import { useAuth } from '../../contexts/AuthContext.jsx';
 import { uploadPhoto } from '../../api/consumption.js';
 import './UploadPage.css';
 
-// "apple_pie" -> "Apple Pie". See note below on the product_name gap.
 function formatClassName(rawName) {
   if (!rawName) return '';
   return rawName
@@ -13,9 +12,8 @@ function formatClassName(rawName) {
     .join(' ');
 }
 
-// Backend gap: ConsumptionLogResponse doesn't include product_name/confidence
-// yet, only product_id. Falls back gracefully until the backend adds them.
 function productLabel(entry) {
+  if (entry.predicted_class) return formatClassName(entry.predicted_class);
   if (entry.product_name) return formatClassName(entry.product_name);
   return `Product #${entry.product_id}`;
 }
@@ -39,6 +37,7 @@ export default function UploadPage() {
   const [msg, setMsg] = useState({ text: '', error: false });
   const [busy, setBusy] = useState(false);
   const fileInputRef = useRef(null);
+  const log = result?.consumption_log;
 
   function handleFileChange(event) {
     const file = event.target.files[0];
@@ -109,7 +108,7 @@ export default function UploadPage() {
         <p className={`form-msg ${msg.error ? 'is-error' : 'is-ok'}`}>{msg.text}</p>
       </form>
 
-      {result && (
+      {result && log && (
         <div className="nutrition-label">
           <div className="nutrition-label__eyebrow">Результат розпізнавання</div>
           <div className="nutrition-label__title">{productLabel(result)}</div>
@@ -120,22 +119,22 @@ export default function UploadPage() {
           )}
           <div className="nutrition-label__row nutrition-label__row--big">
             <span className="nutrition-label__key">Калорії</span>
-            <span className="nutrition-label__val">{fmt(result.log_calories)} ккал</span>
+            <span className="nutrition-label__val">{fmt(log.log_calories)} ккал</span>
           </div>
           <div className="nutrition-label__row">
             <span className="nutrition-label__key">Білки</span>
-            <span className="nutrition-label__val">{fmt(result.log_protein)} г</span>
+            <span className="nutrition-label__val">{fmt(log.log_protein)} г</span>
           </div>
           <div className="nutrition-label__row">
             <span className="nutrition-label__key">Жири</span>
-            <span className="nutrition-label__val">{fmt(result.log_fat)} г</span>
+            <span className="nutrition-label__val">{fmt(log.log_fat)} г</span>
           </div>
           <div className="nutrition-label__row">
             <span className="nutrition-label__key">Вуглеводи</span>
-            <span className="nutrition-label__val">{fmt(result.log_carbs)} г</span>
+            <span className="nutrition-label__val">{fmt(log.log_carbs)} г</span>
           </div>
           <div className="nutrition-label__meta">
-            Порція: {fmt(result.weight, 0)} г · {fmtDateTime(result.consumed_time)} · запис #{result.id}
+            Порція: {fmt(log.weight, 0)} г · {fmtDateTime(log.consumed_time)} · запис #{log.id}
           </div>
         </div>
       )}
