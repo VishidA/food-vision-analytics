@@ -4,8 +4,8 @@ from fastapi import UploadFile, HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from db.models import Products, ConsumptionLog
-from ml.inference import classify_image
+from backend.src.db.models import Products, ConsumptionLog
+from backend.src.ml.inference import classify_image
 
 ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png"}
 MAX_FILE_SIZE_MB = 10

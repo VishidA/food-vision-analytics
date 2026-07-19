@@ -2,9 +2,9 @@ import asyncio
 import httpx
 from pathlib import Path
 from sqlalchemy import func, select
-from core.config import settings
-from db.models.products import Products
-from db.database import async_session_maker
+from backend.src.core.config import settings
+from backend.src.db.models.products import Products
+from backend.src.db.database import async_session_maker
 
 SPOONACULAR_API_KEY = settings.SPOONACULAR_API_KEY
 API_URL = "https://api.spoonacular.com/recipes/guessNutrition"

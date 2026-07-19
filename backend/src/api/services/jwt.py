@@ -1,8 +1,8 @@
 import jwt
 from datetime import datetime, timezone, timedelta
-from api.schemas.tokens import JWTMeta, JWTUser
+from backend.src.api.schemas.tokens import JWTMeta, JWTUser
 from typing import Dict, Any
-from db.models.users import Users
+from backend.src.db.models.users import Users
 
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7

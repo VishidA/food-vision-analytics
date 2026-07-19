@@ -2,10 +2,10 @@ from typing import List
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-from db.database import get_async_session
-from db.models import Users, ConsumptionLog, Products
-from api.schemas.consumption_log import ConsumptionLogResponse
-from api.dependencies.auth import get_current_user
+from backend.src.db.database import get_async_session
+from backend.src.db.models import Users, ConsumptionLog, Products
+from backend.src.api.schemas.consumption_log import ConsumptionLogResponse
+from backend.src.api.dependencies.auth import get_current_user
 
 router = APIRouter()
 

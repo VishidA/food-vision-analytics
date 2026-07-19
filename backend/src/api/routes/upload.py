@@ -3,11 +3,11 @@ from decimal import Decimal
 from fastapi import APIRouter, UploadFile, File, Form, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from db.database import get_async_session
-from api.services.upload_service import process_upload
-from api.schemas.consumption_log import UploadResponse
-from api.dependencies.auth import get_current_user
-from db.models.users import Users
+from backend.src.db.database import get_async_session
+from backend.src.api.services.upload_service import process_upload
+from backend.src.api.schemas.consumption_log import UploadResponse
+from backend.src.api.dependencies.auth import get_current_user
+from backend.src.db.models.users import Users
 
 router = APIRouter()
 
