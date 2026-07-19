@@ -1,4 +1,4 @@
-export const API_BASE = 'http://127.0.0.1:8080/api/v1';
+export const API_BASE = 'http://127.0.0.1:8000/api/v1';
 
 export async function apiFetch(path, { token, ...options } = {}) {
   const headers = options.headers || {};
