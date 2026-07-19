@@ -5,25 +5,24 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from db.database import get_async_session
 from api.services.upload_service import process_upload
-from api.schemas.consuption_log import ConsumptionLogResponse
-# from api.dependencies.auth import get_current_user  # TODO: підключити, коли буде готовий auth
+from api.schemas.consumption_log import ConsumptionLogResponse
+from api.dependencies.auth import get_current_user
+from db.models.users import Users
 
-router = APIRouter(prefix="/upload", tags=["upload"])
+router = APIRouter()
 
-
-@router.post("/", response_model=ConsumptionLogResponse)
+@router.post("/upload", response_model=ConsumptionLogResponse)
 async def upload_photo(
     file: UploadFile = File(...),
     weight_grams: Decimal = Form(Decimal("100")),
     session: AsyncSession = Depends(get_async_session),
-    # current_user: Users = Depends(get_current_user),  # TODO
+    current_user: Users = Depends(get_current_user), 
 ):
-    user_id = 1  # TODO: замінити на current_user.id, коли auth-залежність з'явиться
 
     result = await process_upload(
         file=file,
         weight_grams=weight_grams,
-        user_id=user_id,
+        user_id=current_user.id,
         session=session,
     )
     return result["consumption_log"]
