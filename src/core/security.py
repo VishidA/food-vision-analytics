@@ -2,7 +2,9 @@ import jwt
 from passlib.context import CryptContext
 from api.schemas.tokens import JWTUser
 from pydantic import ValidationError
+from core.config import settings
 
+SECRET_KEY = settings.SECURITY_SECRET_KEY
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
