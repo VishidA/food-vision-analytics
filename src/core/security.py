@@ -1,11 +1,8 @@
-from datetime import datetime, timedelta, timezone
 import jwt
 from passlib.context import CryptContext
 from api.schemas.tokens import JWTUser
 from pydantic import ValidationError
-from core.config import settings
 
-SECRET_KEY = settings.SECURITY_SECRET_KEY
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
@@ -19,14 +16,6 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     """Verify whether the provided password matches the stored hash."""
     return pwd_context.verify(plain_password, hashed_password)
 
-def create_access_token(data: dict) -> str:
-    """Generate a JWT access token containing the provided data (typically includes the user ID)."""
-    to_encode = data.copy()
-    expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    to_encode.update({"exp": expire})
-    
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
 
 def get_username_from_token(token: str, secret_key: str) -> str:
     """Extract the `username` from the token after validating it."""
