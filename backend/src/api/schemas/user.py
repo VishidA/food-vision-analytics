@@ -1,12 +1,12 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from datetime import datetime
 
 class UserBase(BaseModel):
-    username: str
-    name: str
+    username: str = Field(..., min_length=3)
+    name: str = Field(..., min_length=3)
 
 class UserCreate(UserBase):
-    password: str
+    password: str = Field(..., min_length=8)
 
 class UserResponse(UserBase):
     id: int
