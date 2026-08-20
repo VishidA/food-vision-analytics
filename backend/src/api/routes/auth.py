@@ -16,7 +16,7 @@ router = APIRouter()
 async def register_user(user_data: UserCreate, db: AsyncSession = Depends(get_async_session)):
     result = await db.execute(select(Users).where(Users.username == user_data.username))
     if result.scalars().first():
-        raise HTTPException(status_code=400, detail="Login already taken")
+        raise HTTPException(status_code=409, detail="Login already taken")
 
     new_user = Users(
         username=user_data.username,
